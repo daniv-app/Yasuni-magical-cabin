@@ -3,67 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yasuní Magical Cabin | Cocina de Medianoche</title>
-  <meta name="description" content="A sacred kitchen in the Yasuní. 2 souls, 2 prayers. | Cocina sagrada en el Yasuní. 2 almas, 2 oraciones.">
+  <title>Yasuní Magical Cabin | Homenaje Sagrado</title>
+  <meta name="description" content="A sacred portrait in the Yasuní. | Un retrato sagrado en el Yasuní.">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- Background: Magical swamp -->
+  <!-- Fondo: pantano mágico -->
   <video class="bg-video" autoplay muted loop playsinline aria-hidden="true">
     <source src="https://grok.x.ai/files/swamp-night-rosemoon-v3.mp4" type="video/mp4"/>
     <img src="https://grok.x.ai/files/fallback.jpg" alt="Pantano mágico" />
   </video>
 
   <main class="kitchen">
-    <!-- Candles -->
+    <!-- Velas ambientales -->
     <div class="candle candle--left"><img src="https://grok.x.ai/files/candle-flame.png" class="flame" alt=""/></div>
     <div class="candle candle--right"><img src="https://grok.x.ai/files/candle-flame.png" class="flame" alt=""/></div>
 
-    <!-- Table for 2 souls -->
+    <!-- Mesa central -->
     <section class="table-scene" aria-labelledby="table-title">
-      <h2 id="table-title" class="sr-only">Table for two souls | Mesa para dos almas</h2>
+      <h2 id="table-title" class="sr-only">Sacred homage | Homenaje sagrado</h2>
       
       <div class="chairs">
-        <button class="chair" id="chair1" aria-label="Chair 1">Chair</button>
-        <button class="chair" id="chair2" aria-label="Chair 2">Chair</button>
+        <button class="chair" id="chair1" aria-label="Pilgrim 1">Pilgrim 1</button>
+        <button class="chair" id="chair2" aria-label="Pilgrim 2">Pilgrim 2</button>
       </div>
 
-      <!-- Sacred portrait -->
-      <figure class="portrait">
-        <img src="https://grok.x.ai/files/portrait.webp" alt="Sacred portrait – do not touch" />
-        <figcaption class="locked">Locked No tocar. Solo mirar.</figcaption>
-      </figure>
+      <!-- RETRATO SAGRADO CON HOMENAJE -->
+      <div class="portrait-container" onclick="nextPortrait()">
+        <!-- Candelabros de plata con velas derretidas -->
+        <div class="candelabra candelabra--left"></div>
+        <div class="candelabra candelabra--right"></div>
 
-      <!-- Prayer boxes (2 independent) -->
+        <!-- Florero de cristal con flores fucsias y rosadas -->
+        <div class="vase">
+          <div class="flowers"></div>
+        </div>
+
+        <!-- Retrato (cambia con clic) -->
+        <div class="portrait-frame">
+          <img id="portrait-img" src="https://grok.x.ai/files/portrait-floral-1.webp" alt="Sacred portrait" class="portrait-slide active" />
+          <img src="https://grok.x.ai/files/portrait-floral-2.webp" alt="Sacred portrait 2" class="portrait-slide" />
+          <img src="https://grok.x.ai/files/portrait-floral-3.webp" alt="Sacred portrait 3" class="portrait-slide" />
+        </div>
+      </div>
+
+      <!-- Cajas de oración flotantes -->
       <div class="prayer-boxes">
-        <div class="prayer-box" id="prayer1" style="display:none;">
-          <div class="header">
-            <span>Prayer Request #1 | Petición #1</span>
-            <button class="toggle-visibility" onclick="togglePrayer(1)" aria-label="Show/Hide">
-              <i class="fas fa-eye"></i>
-            </button>
-          </div>
-          <textarea id="prayer-text-1" placeholder="Write your prayer... | Escribe tu oración..." onkeypress="handleEnter(event,1)"></textarea>
-          <button onclick="sendPrayer(1)">Send to the ether | Enviar al éter</button>
-          <p class="privacy">No data is collected | Ningún dato se recopila</p>
-        </div>
-
-        <div class="prayer-box" id="prayer2" style="display:none;">
-          <div class="header">
-            <span>Prayer Request #2 | Petición #2</span>
-            <button class="toggle-visibility" onclick="togglePrayer(2)" aria-label="Show/Hide">
-              <i class="fas fa-eye"></i>
-            </button>
-          </div>
-          <textarea id="prayer-text-2" placeholder="Write your prayer... | Escribe tu oración..." onkeypress="handleEnter(event,2)"></textarea>
-          <button onclick="sendPrayer(2)">Send to the ether | Enviar al éter</button>
-          <p class="privacy">No data is collected | Ningún dato se recopila</p>
-        </div>
+        <div class="prayer-box floating" id="prayer1" style="display:none;"></div>
+        <div class="prayer-box floating" id="prayer2" style="display:none;"></div>
       </div>
     </section>
 
-    <!-- Fridge -->
+    <!-- Refri -->
     <button class="fridge" id="open-fridge" aria-label="Open fridge">
       <span class="heart">Heart</span>
     </button>
