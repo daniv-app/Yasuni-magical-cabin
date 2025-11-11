@@ -1,57 +1,92 @@
-/* ... (mantén todo lo anterior hasta .wish-box) ... */
+/* ... (mantén todo lo anterior) ... */
 
-/* Prayer boxes */
-.prayer-boxes {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
+/* Retrato sagrado con homenaje */
+.portrait-container {
+  position: relative;
+  margin: 2rem auto;
+  width: 240px;
+  cursor: pointer;
+  user-select: none;
 }
-.prayer-box {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid #a8e6cf;
-  border-radius: 16px;
-  padding: 1rem;
-  width: 280px;
+
+/* Candelabros de plata */
+.candelabra {
+  position: absolute;
+  bottom: -30px;
+  width: 20px; height: 60px;
+  background: linear-gradient(to top, #c0c0c0, #e5e5e5);
+  border-radius: 2px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+.candelabra--left  { left: 30px; }
+.candelabra--right { right: 30px; }
+.candelabra::after {
+  content: "";
+  position: absolute;
+  top: -25px; left: 50%;
+  transform: translateX(-50%);
+  width: 16px; height: 30px;
+  background: #ff69b4; /* vela rosada */
+  border-radius: 8px 8px 4px 4px;
+  box-shadow: 0 0 12px #ff69b4;
+}
+.candelabra--right::after { background: #006400; } /* vela verde oscuro */
+
+/* Florero de cristal */
+.vase {
+  position: absolute;
+  bottom: -50px; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 40px;
+  background: rgba(255,255,255,0.15);
+  border: 3px solid rgba(255,255,255,0.4);
+  border-radius: 50% 50% 10% 10% / 60% 60% 20% 20%;
   backdrop-filter: blur(4px);
+  z-index: 1;
 }
-.prayer-box .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  color: #ffd1dc;
-}
-.toggle-visibility {
-  background: none; border: none; color: #ffd1dc; font-size: 1.2rem; cursor: pointer;
-}
-.prayer-box textarea {
-  width: 100%; height: 70px; padding: 0.75rem;
-  background: rgba(0,0,0,0.3); color: #fff; border: 1px dashed #0f0;
-  border-radius: 10px; resize: none; font-family: inherit;
-}
-.prayer-box textarea.hidden {
-  color: transparent; text-shadow: 0 0 8px #0f0;
-}
-.prayer-box button {
-  width: 100%; margin-top: 0.5rem; padding: 0.6rem;
-  background: linear-gradient(45deg, #0f0, #0ff); color: #000;
-  border: none; border-radius: 20px; font-weight: bold; cursor: pointer;
-}
-.prayer-box .privacy {
-  font-size: 0.65rem; color: #a8e6cf; text-align: center; margin-top: 0.5rem; opacity: 0.8;
+.flowers {
+  position: absolute;
+  top: -35px; left: 50%;
+  transform: translateX(-50%);
+  width: 70px; height: 40px;
+  background: radial-gradient(circle at 30% 50%, #ff1493, transparent 50%),
+              radial-gradient(circle at 70% 50%, #ff69b4, transparent 50%),
+              radial-gradient(circle at 50% 30%, #ff1493, transparent 50%);
+  filter: drop-shadow(0 4px 8px rgba(255,20,147,0.6));
 }
 
-/* Spark animation */
-@keyframes sparkFade {
-  0% { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(-100px) scale(0); }
+/* Marco del retrato */
+.portrait-frame {
+  position: relative;
+  width: 100%; height: 300px;
+  overflow: hidden;
+  border: 12px solid #f5e6d3;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  background: #111;
 }
-.spark {
-  position: absolute; width: 4px; height: 4px; border-radius: 50%;
-  pointer-events: none; animation: sparkFade 1.5s forwards;
+.portrait-slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateX(100%);
 }
-.spark.green { background: #0f0; box-shadow: 0 0 8px #0f0; }
-.spark.blue { background: #0ff; box-shadow: 0 0 8px #0ff; }
+.portrait-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.portrait-slide.prev {
+  transform: translateX(-100%);
+}
+
+/* Cajas flotantes que siguen al peregrino */
+.floating {
+  position: absolute;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  z-index: 10;
+}
