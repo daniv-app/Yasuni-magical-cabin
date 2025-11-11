@@ -1,0 +1,17 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="luna" cx="50%" cy="20%" r="20%">
+      <stop offset="0%" stop-color="#ff69b4" />
+      <stop offset="50%" stop-color="#ffb6c1" />
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="#001122" />
+  <circle cx="960" cy="216" r="108" fill="url(#luna)" />
+  <g opacity="0.6">
+    <circle cx="200" cy="100" r="1" fill="#fff" />
+    <circle cx="400" cy="150" r="0.5" fill="#fff" />
+    <circle cx="1200" cy="80" r="1.5" fill="#fff" />
+    <circle cx="1600" cy="120" r="0.8" fill="#fff" />
+  </g>
+</svg>
