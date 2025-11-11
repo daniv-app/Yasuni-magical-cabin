@@ -3,41 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yasuní Cabina Mágica🤍✨️ Yasuní Magical Cabin 🤍✨</title>
+  <title>Yasuní Magical Cabin | Cocina de Medianoche</title>
+  <meta name="description" content="A sacred kitchen in the Yasuní. 2 souls, 2 prayers. | Cocina sagrada en el Yasuní. 2 almas, 2 oraciones.">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <video id="swamp-bg" autoplay muted loop playsinline>
+  <!-- Background: Magical swamp -->
+  <video class="bg-video" autoplay muted loop playsinline aria-hidden="true">
     <source src="https://grok.x.ai/files/swamp-night-rosemoon-v3.mp4" type="video/mp4"/>
+    <img src="https://grok.x.ai/files/fallback.jpg" alt="Pantano mágico" />
   </video>
 
-  <div class="kitchen">
-    <!-- Velas -->
-    <div class="candle" style="left: 15%; top: 20%;"><img src="https://grok.x.ai/files/candle-flame.png" class="flame" /></div>
-    <div class="candle" style="right: 18%; top: 25%;"><img src="https://grok.x.ai/files/candle-flame.png" class="flame" /></div>
+  <main class="kitchen">
+    <!-- Candles -->
+    <div class="candle candle--left"><img src="https://grok.x.ai/files/candle-flame.png" class="flame" alt=""/></div>
+    <div class="candle candle--right"><img src="https://grok.x.ai/files/candle-flame.png" class="flame" alt=""/></div>
 
-    <!-- Mesa -->
-    <div class="table">
-      <div class="chair" id="chair1">Chair</div>
-      <div class="chair" id="chair2">Chair</div>
-      <div class="portrait">
-        <img src="https://grok.x.ai/files/portrait.webp" alt="Retrato sagrado" />
-        <p class="locked">Locked No tocar</p>
+    <!-- Table for 2 souls -->
+    <section class="table-scene" aria-labelledby="table-title">
+      <h2 id="table-title" class="sr-only">Table for two souls | Mesa para dos almas</h2>
+      
+      <div class="chairs">
+        <button class="chair" id="chair1" aria-label="Chair 1">Chair</button>
+        <button class="chair" id="chair2" aria-label="Chair 2">Chair</button>
       </div>
-      <div class="note-box">
-        <textarea placeholder="Escribe tu deseo..." id="wish"></textarea>
-        <button onclick="sendWish()">Lanzar al pantano</button>
+
+      <!-- Sacred portrait -->
+      <figure class="portrait">
+        <img src="https://grok.x.ai/files/portrait.webp" alt="Sacred portrait – do not touch" />
+        <figcaption class="locked">Locked No tocar. Solo mirar.</figcaption>
+      </figure>
+
+      <!-- Prayer boxes (2 independent) -->
+      <div class="prayer-boxes">
+        <div class="prayer-box" id="prayer1" style="display:none;">
+          <div class="header">
+            <span>Prayer Request #1 | Petición #1</span>
+            <button class="toggle-visibility" onclick="togglePrayer(1)" aria-label="Show/Hide">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <textarea id="prayer-text-1" placeholder="Write your prayer... | Escribe tu oración..." onkeypress="handleEnter(event,1)"></textarea>
+          <button onclick="sendPrayer(1)">Send to the ether | Enviar al éter</button>
+          <p class="privacy">No data is collected | Ningún dato se recopila</p>
+        </div>
+
+        <div class="prayer-box" id="prayer2" style="display:none;">
+          <div class="header">
+            <span>Prayer Request #2 | Petición #2</span>
+            <button class="toggle-visibility" onclick="togglePrayer(2)" aria-label="Show/Hide">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <textarea id="prayer-text-2" placeholder="Write your prayer... | Escribe tu oración..." onkeypress="handleEnter(event,2)"></textarea>
+          <button onclick="sendPrayer(2)">Send to the ether | Enviar al éter</button>
+          <p class="privacy">No data is collected | Ningún dato se recopila</p>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Refri -->
-    <div class="fridge" id="open-fridge"></div>
-  </div>
+    <!-- Fridge -->
+    <button class="fridge" id="open-fridge" aria-label="Open fridge">
+      <span class="heart">Heart</span>
+    </button>
+  </main>
 
-  <audio id="ambience" loop>
+  <audio id="ambience" loop preload="auto">
     <source src="https://grok.x.ai/files/sound-ambience.mp3" type="audio/mpeg">
   </audio>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
