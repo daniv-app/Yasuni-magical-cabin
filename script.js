@@ -1,36 +1,57 @@
-let usersInRoom = 0;
-const maxUsers = 2;
-const chairs = document.querySelectorAll('.chair');
-const ambience = document.getElementById('ambience');
-let isPlaying = false;
+/* ... (mantén todo lo anterior hasta .wish-box) ... */
 
-chairs.forEach(chair => {
-  chair.addEventListener('click', () => {
-    if (usersInRoom >= maxUsers) return alert("Solo 2 almas");
-    if (!chair.classList.contains('occupied')) {
-      chair.classList.add('occupied');
-      chair.textContent = "Person";
-      usersInRoom++;
-      if (!isPlaying) { ambience.play(); isPlaying = true; }
-    }
-  });
-});
-
-function sendWish() {
-  const wish = document.getElementById('wish');
-  if (!wish.value) return;
-  const bubble = document.createElement('div');
-  bubble.textContent = wish.value;
-  bubble.style.cssText = 'position:absolute; left:50%; bottom:20%; transform:translateX(-50%); background:rgba(255,209,220,0.8); padding:8px 12px; border-radius:20px; animation:floatUp 4s forwards;';
-  document.body.appendChild(bubble);
-  wish.value = "";
-  setTimeout(() => bubble.remove(), 4000);
+/* Prayer boxes */
+.prayer-boxes {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.prayer-box {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid #a8e6cf;
+  border-radius: 16px;
+  padding: 1rem;
+  width: 280px;
+  backdrop-filter: blur(4px);
+}
+.prayer-box .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #ffd1dc;
+}
+.toggle-visibility {
+  background: none; border: none; color: #ffd1dc; font-size: 1.2rem; cursor: pointer;
+}
+.prayer-box textarea {
+  width: 100%; height: 70px; padding: 0.75rem;
+  background: rgba(0,0,0,0.3); color: #fff; border: 1px dashed #0f0;
+  border-radius: 10px; resize: none; font-family: inherit;
+}
+.prayer-box textarea.hidden {
+  color: transparent; text-shadow: 0 0 8px #0f0;
+}
+.prayer-box button {
+  width: 100%; margin-top: 0.5rem; padding: 0.6rem;
+  background: linear-gradient(45deg, #0f0, #0ff); color: #000;
+  border: none; border-radius: 20px; font-weight: bold; cursor: pointer;
+}
+.prayer-box .privacy {
+  font-size: 0.65rem; color: #a8e6cf; text-align: center; margin-top: 0.5rem; opacity: 0.8;
 }
 
-const style = document.createElement('style');
-style.textContent = '@keyframes floatUp { to { transform: translate(-50%, -600px); opacity: 0; } }';
-document.head.appendChild(style);
-
-document.getElementById('open-fridge').addEventListener('click', () => {
-  alert("¡Menú de medianoche pronto! Sandwiches, vino, té... ✨");
-});
+/* Spark animation */
+@keyframes sparkFade {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-100px) scale(0); }
+}
+.spark {
+  position: absolute; width: 4px; height: 4px; border-radius: 50%;
+  pointer-events: none; animation: sparkFade 1.5s forwards;
+}
+.spark.green { background: #0f0; box-shadow: 0 0 8px #0f0; }
+.spark.blue { background: #0ff; box-shadow: 0 0 8px #0ff; }
