@@ -1,0 +1,19 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="agua" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4a90e2" />
+      <stop offset="100%" stop-color="#2a5a9a" />
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="#0a0a0a" />
+  <rect x="0" y="540" width="1920" height="540" fill="url(#agua)" opacity="0.6" />
+  <circle cx="400" cy="600" r="20" fill="#90ee90" opacity="0.8" />
+  <circle cx="800" cy="620" r="15" fill="#98fb98" opacity="0.7" />
+  <circle cx="1200" cy="580" r="25" fill="#90ee90" opacity="0.9" />
+  <circle cx="1600" cy="610" r="18" fill="#98fb98" opacity="0.8" />
+  <g opacity="0.5">
+    <circle cx="200" cy="700" r="2" fill="#fff" />
+    <circle cx="500" cy="750" r="1.5" fill="#fff" />
+    <circle cx="900" cy="680" r="2.5" fill="#fff" />
+  </g>
+</svg>
