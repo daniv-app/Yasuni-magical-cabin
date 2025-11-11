@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Yasuní Magical Cabin | Homenaje Sagrado</title>
-  <meta name="description" content="A sacred portrait in the Yasuní. | Un retrato sagrado en el Yasuní.">
+  <meta name="description" content="2 pilgrims, sacred portrait, floating prayers. | 2 peregrinos, retrato sagrado, oraciones flotantes.">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -24,6 +24,7 @@
     <section class="table-scene" aria-labelledby="table-title">
       <h2 id="table-title" class="sr-only">Sacred homage | Homenaje sagrado</h2>
       
+      <!-- Sillas -->
       <div class="chairs">
         <button class="chair" id="chair1" aria-label="Pilgrim 1">Pilgrim 1</button>
         <button class="chair" id="chair2" aria-label="Pilgrim 2">Pilgrim 2</button>
@@ -40,7 +41,7 @@
           <div class="flowers"></div>
         </div>
 
-        <!-- Retrato (cambia con clic) -->
+        <!-- Marco del retrato (animación estilo revista) -->
         <div class="portrait-frame">
           <img id="portrait-img" src="https://grok.x.ai/files/portrait-floral-1.webp" alt="Sacred portrait" class="portrait-slide active" />
           <img src="https://grok.x.ai/files/portrait-floral-2.webp" alt="Sacred portrait 2" class="portrait-slide" />
@@ -50,8 +51,29 @@
 
       <!-- Cajas de oración flotantes -->
       <div class="prayer-boxes">
-        <div class="prayer-box floating" id="prayer1" style="display:none;"></div>
-        <div class="prayer-box floating" id="prayer2" style="display:none;"></div>
+        <div class="prayer-box floating" id="prayer1" style="display:none;">
+          <div class="header">
+            <input type="text" id="name1" placeholder="Your name... | Tu nombre..." maxlength="15" oninput="updateChairName(1)" />
+            <button class="toggle-visibility" onclick="togglePrayer(1)" aria-label="Show/Hide">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <textarea id="prayer-text-1" placeholder="Write your prayer... | Escribe tu oración..." onkeypress="handleEnter(event,1)"></textarea>
+          <button onclick="sendPrayer(1)">Send to the ether | Enviar al éter</button>
+          <p class="privacy">No data is collected | Ningún dato se recopila</p>
+        </div>
+
+        <div class="prayer-box floating" id="prayer2" style="display:none;">
+          <div class="header">
+            <input type="text" id="name2" placeholder="Your name... | Tu nombre..." maxlength="15" oninput="updateChairName(2)" />
+            <button class="toggle-visibility" onclick="togglePrayer(2)" aria-label="Show/Hide">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <textarea id="prayer-text-2" placeholder="Write your prayer... | Escribe tu oración..." onkeypress="handleEnter(event,2)"></textarea>
+          <button onclick="sendPrayer(2)">Send to the ether | Enviar al éter</button>
+          <p class="privacy">No data is collected | Ningún dato se recopila</p>
+        </div>
       </div>
     </section>
 
@@ -61,6 +83,7 @@
     </button>
   </main>
 
+  <!-- Sonido ambiente -->
   <audio id="ambience" loop preload="auto">
     <source src="https://grok.x.ai/files/sound-ambience.mp3" type="audio/mpeg">
   </audio>
